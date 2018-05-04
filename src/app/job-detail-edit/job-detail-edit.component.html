@@ -1,0 +1,74 @@
+<div class="row" *ngIf='editOn'>
+  <div class="col-lg-12">
+    <div class="panel panel-yellow">
+      <div class="panel-heading">
+        Editing Job: {{editedJob.role}} [ID= {{editedJob.id}}]
+      </div>
+      <form>
+        <div class="panel-body">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#attributes-formtab" data-toggle="tab">Attributes</a>
+            </li>
+            <li>
+              <a href="#description-formtab" data-toggle="tab">Description</a>
+            </li>
+            <li>
+              <a href="#roles-formtab" data-toggle="tab">Roles</a>
+            </li>
+            <li>
+              <a href="#skillset-formtab" data-toggle="tab">Skillset</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade in active col-lg-10 col-md-10" id="attributes-formtab">
+              <label>Company:
+                <input name="company" class="form-control" size="40" required minlength="4" [(ngModel)]='editedJob.company' #comp="ngModel"
+                />
+              </label>
+              <!-- validation for company added here start  -->
+              <div *ngIf="comp.invalid && (comp.dirty || comp.touched)" class="alert alert-danger">
+                Company Name is required
+              </div>
+              <!-- validation for company added here ENDS -->
+              <label>Location:
+                <input name="location" class="form-control" size="40" required minlength="2" [(ngModel)]='editedJob.location' #location="ngModel"
+                />
+              </label>
+              <!-- validation for location added here start  -->
+              <div *ngIf="location.invalid && (location.dirty || location.touched)" class="alert alert-danger">
+                Location must be greater than 2 characters.
+              </div>
+              <!-- validation for location added here ENDS -->
+              <label>Salary:
+                <input name="salary" class="form-control" size="40" required minlength="5" [(ngModel)]='editedJob.salary' #salary="ngModel"
+                />
+              </label>
+              <!-- validation for salary added here start  -->
+              <div *ngIf="salary.invalid && (salary.dirty || salary.touched)" class="alert alert-danger">
+                Salary must be greater than 5 digits.
+              </div>
+              <!-- validation for location added here ENDS -->
+            </div>
+            <div class="tab-pane fade" id="description-formtab">
+              <h4>Description</h4>
+              <textarea class="form-control" rows="8">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+            </div>
+            <div class="tab-pane fade" id="roles-formtab">
+              <h4>Roles</h4>
+              <textarea class="form-control" rows="8">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+            </div>
+            <div class="tab-pane fade" id="skillset-formtab">
+              <h4>Skillset</h4>
+              <textarea class="form-control" rows="8">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <button type="submit" class="btn btn-success" (click)='saveChanges(editedJob)'>Save</button>
+          <button class="btn" (click)='cancelChanges()'>Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

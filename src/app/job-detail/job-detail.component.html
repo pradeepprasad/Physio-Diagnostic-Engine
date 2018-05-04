@@ -1,0 +1,83 @@
+<div class="row" *ngIf = '!editOn && selectedJob'>
+  <div class="col-lg-12">
+      <div class="panel panel-primary">
+          <div class="panel-heading">
+              Viewing Job: {{selectedJob.role}} [ID = {{selectedJob.id}}]
+          </div>
+          <div class="panel-body">
+              <ul class="nav nav-tabs">
+                  <li class="active">
+                      <a href="#attributes-tab" data-toggle="tab">Attributes</a>
+                  </li>
+                  <li>
+                      <a href="#description-tab" data-toggle="tab">Description</a>
+                  </li>
+                  <li>
+                      <a href="#roles-tab" data-toggle="tab">Roles</a>
+                  </li>
+                  <li>
+                      <a href="#skillset-tab" data-toggle="tab">Skillset</a>
+                  </li>
+              </ul>
+              <div class="tab-content">
+                  <div class="tab-pane fade in active" id="attributes-tab">
+                      <table class="table table-striped">
+                          <tr>
+                              <td>Company</td>
+                              <td>{{selectedJob.company}}</td>
+                          </tr>
+                          <tr>
+                              <td>Location</td>
+                              <td>{{selectedJob.location}}</td>
+                          </tr>
+                          <tr>
+                              <td>Salary</td>
+                              <td>{{selectedJob.salary}}</td>
+                          </tr>
+                          <tr>
+                              <td>No. of applicants</td>
+                              <td>{{selectedJob.applicantCount}}</td>
+                          </tr>
+                      </table>
+                  </div>
+                  <div class="tab-pane fade" id="description-tab">
+                      <h4>Description</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="tab-pane fade" id="roles-tab">
+                      <h4>Roles</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="tab-pane fade" id="skillset-tab">
+                      <h4>Skillset</h4>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+                          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="panel-footer">
+              <button class="btn btn-success">Apply</button>
+              <button class="btn btn-warning" (click)='allowEditFromDetail(true, selectedJob)' *ngIf= 'userRole =="manager"'>Edit</button>
+              <button class="btn" (click)='onClose()'>Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- keeping below code to job details EDIT - Starts -->
+        <!-- ----------------------------------- Starts -->
+       <app-job-detail-edit [selectedJob] ='selectedJob' [editedJob] ='editedJob' [editOn] ='editOn' [userRole] ='userRole' (onModeChange)="onModeChange()"></app-job-detail-edit>
+       
+        <!-- ----------------------------------- Starts -->
+            <!-- keeping below code to job details EDIT - Ends -->
